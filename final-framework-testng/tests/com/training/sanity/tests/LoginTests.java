@@ -32,12 +32,13 @@ public class LoginTests {
 
 	@BeforeMethod
 	public void setUp() throws Exception {
-		driver = DriverFactory.getDriver(DriverNames.CHROME);
+		driver = DriverFactory.getDriver(DriverNames.FIREFOX);
 		loginPOM = new LoginPOM(driver); 
 		baseUrl = properties.getProperty("baseURL");
 		screenShot = new ScreenShot(driver); 
 		// open the browser 
 		driver.get(baseUrl);
+		Thread.sleep(5000);
 	}
 	
 	@AfterMethod
@@ -47,9 +48,11 @@ public class LoginTests {
 	}
 	@Test
 	public void validLoginTest() {
-		loginPOM.sendUserName("admin");
-		loginPOM.sendPassword("admin@123");
+		loginPOM.sendUserName("phani");
+		loginPOM.sendPassword("phani@123");
 		loginPOM.clickLoginBtn(); 
-		screenShot.captureScreenShot("First");
+		//screenShot.captureScreenShot("First");
+		loginPOM.message1();
+		
 	}
 }
